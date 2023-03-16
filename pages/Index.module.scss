@@ -1,0 +1,275 @@
+@import "../styles/variables.scss";
+
+$socials-width: 25rem;
+
+.Container {
+  display: flex;
+  flex-direction: column;
+
+  @media screen and (max-width: 780px) {
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+  }
+
+  p {
+    color: $color-light;
+
+    @media screen and (min-width: 781px) {
+      margin-top: -15rem;
+      width: 23rem;
+      padding-left: 4rem;
+    }
+
+    @media screen and (min-width: 950px) {
+      margin-top: -20rem;
+    }
+  }
+
+  h1 {
+    font-size: 7rem;
+    font-family: "Kavoon", sans-serif;
+    letter-spacing: 1rem;
+    color: transparent;
+    position: relative;
+    display: flex;
+    flex-direction: column-reverse;
+
+    @media screen and (max-width: 1000px) {
+      font-size: 6rem;
+      letter-spacing: 0.3rem;
+    }
+
+    @media screen and (max-width: 780px) {
+      align-items: center;
+      font-size: 4rem;
+    }
+  }
+
+  .ChildOne,
+  .ChildTwo {
+    transition: 1000ms;
+    max-width: max-content;
+  }
+
+  .ChildOne {
+    -webkit-text-stroke: 1px $color-pry;
+    text-shadow: 0 0 5px $color-pink;
+    margin-top: -1rem;
+
+    @media screen and (min-width: 781px) {
+      position: inherit;
+      z-index: 4;
+      margin-left: 20%;
+      margin-top: 6rem;
+    }
+
+    @media screen and (max-width: 780px) {
+      -webkit-text-stroke: 1px $color-dark;
+      text-shadow: none;
+      font-size: 5rem;
+    }
+  }
+  .ChildTwo {
+    -webkit-text-stroke: 1px $color-pry;
+    text-shadow: 0 0 5px $color-pink;
+    margin-top: -2rem;
+    max-width: max-content;
+
+    &:hover {
+      z-index: 5;
+      scale: 1.05;
+      -webkit-text-stroke: 1px $color-pry;
+      text-shadow: 0 0 5px $color-pink;
+    }
+
+    &:hover + .ChildOne {
+      z-index: 1;
+      -webkit-text-stroke: 1px $color-dark;
+      text-shadow: none;
+    }
+
+    @media screen and (min-width: 781px) {
+      margin-top: -3rem;
+      margin-bottom: 5rem;
+      margin-left: 10%;
+      -webkit-text-stroke: 1px $color-dark;
+      text-shadow: none;
+    }
+
+    @media screen and (min-width: 950px) {
+      margin-bottom: 7rem;
+    }
+
+    @media screen and (min-width: 1000px) {
+      margin-bottom: 3rem;
+    }
+  }
+
+  .Buttons {
+    display: flex;
+    gap: 2rem;
+
+    @media screen and (min-width: 781px) {
+      margin-left: 15%;
+      margin-top: -2rem;
+    }
+
+    span {
+      font-weight: bold;
+      text-transform: uppercase;
+      padding: 1rem 2rem;
+      border-radius: 1rem;
+      border: 2px solid $color-light;
+      color: $color-light;
+      font-weight: bold;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: $transition;
+      text-align: center;
+      width: 14rem;
+
+      &:hover {
+        width: 16rem;
+        color: $color-pink;
+        border: 2px solid $color-pink;
+      }
+
+      @media screen and (max-width: 780px) {
+        width: 10rem;
+        font-size: 1.4rem;
+        padding: 0.5rem 1rem;
+
+        &:hover {
+          width: 10rem;
+          color: $color-pink;
+          border: 2px solid $color-pink;
+        }
+      }
+    }
+  }
+
+  .Socials {
+    order: -2;
+    align-self: flex-end;
+    margin-top: 3rem;
+    margin-right: 10%;
+    width: $socials-width;
+    height: $socials-width;
+    border-radius: 50%;
+    border: 0.3rem solid $color-pink;
+    transition: $transition;
+    transform: rotate(45deg);
+    background: radial-gradient(
+      circle,
+      rgba($color-pink, 1) 0%,
+      rgba($color-pry, 1) 81%,
+      rgba($color-pink, 1) 100%
+    );
+
+    &.Stop {
+      transform: rotate(0);
+    }
+
+    @media screen and (max-width: 780px) {
+      width: 20rem;
+      height: 20rem;
+      order: 0;
+      align-self: center;
+      margin-top: 2rem;
+      margin-right: 0;
+    }
+
+    @media screen and (min-width: 781px) {
+      width: 17rem;
+      height: 17rem;
+      margin-right: 5%;
+      margin-top: 5rem;
+    }
+
+    @media screen and (min-width: 950px) {
+      width: 20rem;
+      height: 20rem;
+      margin-right: 10%;
+    }
+
+    @media screen and (min-width: 1100px) {
+      width: 25rem;
+      height: 25rem;
+      margin-top: 2rem;
+    }
+  }
+
+  .SocialIconsContainer {
+    width: 5rem;
+    height: 5rem;
+    background: $color-pry;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    box-shadow: 0 0 5px $color-pry;
+    border: 3px solid $color-pink;
+    position: absolute;
+    transition: $transition;
+
+    &:hover {
+      width: 5.5rem;
+      height: 5.5rem;
+    }
+
+    &:nth-of-type(1) {
+      top: 0;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+    &:nth-of-type(2) {
+      right: -2.5rem;
+      top: 50%;
+      transform: translate(0, -50%);
+    }
+    &:nth-of-type(3) {
+      left: -2.5rem;
+      top: 50%;
+      transform: translate(0, -50%);
+    }
+    &:nth-of-type(4) {
+      bottom: -2rem;
+      left: 50%;
+      transform: translate(-50%);
+    }
+    &:nth-of-type(5) {
+      width: 7rem;
+      height: 7rem;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+    }
+  }
+
+  svg {
+    color: white;
+    width: 3rem;
+    height: 3rem;
+  }
+
+  .NextImageContainer {
+    max-width: 35rem;
+    @media screen and (min-width: 781px) {
+      position: absolute;
+      top: calc($NavHeight + 6rem);
+      left: 13%;
+    }
+
+    @media screen and (min-width: 781px) {
+      top: calc($NavHeight + 4rem);
+      left: 17%;
+    }
+
+    z-index: 3;
+    transition: 1000ms;
+
+    &:hover {
+      scale: 0.95;
+    }
+  }
+}

@@ -1,0 +1,36 @@
+@import "../../styles/variables.scss";
+.One {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 100vw;
+  height: 100vh;
+  -webkit-clip-path: polygon(0% 100%, 100% 100%, 0% 0%);
+  clip-path: polygon(0% 100%, 100% 100%, 0% 0%);
+  background-color: #1b0642;
+  transform: translate(0);
+  transition: 1000ms ease-out;
+  z-index: 20;
+
+  &.Animate {
+    transform: translate(-120vw);
+  }
+}
+
+.Two {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  -webkit-clip-path: polygon(100% 0, 0 0, 100% 100%);
+  clip-path: polygon(100% 0, 0 0, 100% 100%);
+  background-color: #1b0642;
+  transition: 1000ms ease-out;
+  z-index: 20;
+
+  &.Animate {
+    transform: translate(100vw);
+  }
+}

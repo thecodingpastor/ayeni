@@ -1,0 +1,37 @@
+@import "../../styles/variables.scss";
+
+.Button {
+  padding: 1rem 2rem;
+  border-radius: 1rem;
+  cursor: pointer;
+  display: inline-block;
+  margin-top: 1rem;
+  font-size: 2rem;
+  transition: $transition;
+
+  &.pry {
+    border: 2px solid $color-light;
+    color: $color-light;
+    background-color: $color-pry;
+
+    &:hover {
+      background-color: darken($color-pry, 10%);
+      border: 2px solid white;
+      color: white;
+    }
+  }
+  // medium, small sizes
+
+  &.Disabled {
+    cursor: not-allowed;
+    background-color: darkgray;
+    color: whitesmoke;
+
+    &:hover {
+      cursor: not-allowed;
+      background-color: darkgray;
+      color: whitesmoke;
+      border: 2px solid $color-light;
+    }
+  }
+}

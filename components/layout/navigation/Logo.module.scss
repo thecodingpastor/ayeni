@@ -1,0 +1,28 @@
+@import "../../../styles/variables.scss";
+
+.Container {
+  border-radius: 50%;
+  background: linear-gradient(135deg, $color-pry, $color-pink);
+  padding: 4rem;
+  position: relative;
+
+  @media screen and (max-width: 780px) {
+    padding: 3rem;
+  }
+
+  figure {
+    width: 7rem;
+    height: 7rem;
+    border-radius: 50%;
+    background: linear-gradient(135deg, $color-pink, $color-pry);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    @media screen and (max-width: 780px) {
+      width: 5rem;
+      height: 5rem;
+    }
+  }
+}

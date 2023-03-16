@@ -1,0 +1,100 @@
+@import "../../../styles/variables.scss";
+
+.Container {
+  margin: 1rem 5rem;
+  color: $color-light;
+
+  h3 {
+    font-weight: 300;
+    font-size: 2.5rem;
+  }
+
+  h1 {
+    color: $color-light;
+    line-height: 1.2;
+    margin: 0 auto 3rem;
+    font-weight: 300;
+    text-align: center;
+    text-transform: capitalize;
+
+    &::after {
+      content: "";
+      width: 30rem;
+      height: 0.4rem;
+      display: block;
+      border-radius: 1rem;
+      background: linear-gradient(135deg, $color-pink, transparent);
+      margin: 0.5rem auto;
+    }
+  }
+}
+
+.TechStack {
+  display: flex;
+  padding: 1rem;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 3rem;
+  margin-top: 2rem;
+}
+
+.MainContent {
+  h3 {
+    margin: 0 auto;
+    margin-bottom: 3rem;
+  }
+}
+
+.Tags {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  padding: 1rem;
+  color: $color-dark;
+  background: linear-gradient(135deg, $color-light, transparent);
+  font-size: 1.2rem;
+  justify-content: center;
+  margin-bottom: 2rem;
+  border-radius: 2rem;
+
+  span {
+    background-color: $color-pink;
+    padding: 0.3rem 0.6rem;
+    border-radius: 2rem;
+    margin-right: 0.2rem;
+  }
+}
+
+.Externals {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: center;
+  margin-bottom: 2rem;
+
+  & > * {
+    background: linear-gradient(45deg, transparent, $color-light);
+    border-radius: 1rem;
+    border: 2px solid white;
+    padding: 0.3rem 0.7rem;
+    color: $color-dark;
+    cursor: pointer;
+  }
+}
+
+.MainContent {
+  text-align: justify;
+  margin: 5rem auto;
+  img {
+    max-width: 80%;
+    margin: 3rem auto;
+
+    @media screen and (max-width: 650px) {
+      max-width: 100%;
+    }
+  }
+}

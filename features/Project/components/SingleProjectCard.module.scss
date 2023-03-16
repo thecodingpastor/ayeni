@@ -1,0 +1,92 @@
+@import "../../../styles/variables.scss";
+
+.Container {
+  height: 100%;
+  color: $color-light;
+  object-fit: contain;
+  overflow: hidden;
+  border-radius: 2rem;
+  position: relative;
+  margin-top: 2rem;
+  cursor: pointer;
+
+  footer {
+    position: absolute;
+    bottom: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    background-color: $color-light;
+    padding: 0.5rem 2rem;
+    color: $color-dark;
+
+    span:hover {
+      color: $color-pry;
+    }
+  }
+}
+
+.ImageDiv {
+  position: relative;
+  width: 100%;
+  height: 10rem;
+  display: flex;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  background-color: $color-light;
+
+  h3 {
+    text-transform: capitalize;
+    margin: 1rem;
+    font-size: 2.5rem;
+    color: $color-pry;
+    overflow: hidden;
+    line-height: 1.2;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+  }
+
+  img {
+    transition: 500ms ease-in-out;
+  }
+}
+
+.Tags {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  min-height: 10rem;
+  padding: 1rem;
+  color: $color-dark;
+  background: linear-gradient(135deg, $color-light, transparent);
+  font-size: 1.2rem;
+  justify-content: center;
+  border-right: 2px solid $color-light;
+
+  span {
+    background-color: $color-pink;
+    padding: 0.3rem 0.6rem;
+    border-radius: 2rem;
+  }
+}
+
+.Description {
+  text-align: justify;
+  padding: 0.5rem;
+  font-size: 1.5rem;
+  border-right: 2px solid $color-light;
+  border-left: 2px solid $color-light;
+  min-height: 18rem;
+
+  div {
+    @media screen and (min-width: 551px) {
+      margin-bottom: 5rem;
+    }
+  }
+}

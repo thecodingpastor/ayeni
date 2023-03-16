@@ -1,0 +1,14 @@
+@import "../../styles/variables.scss";
+
+.Container {
+  color: $color-light;
+  margin: 0 auto;
+  padding: 0 3rem;
+  max-width: 50rem;
+
+  h1 {
+    margin-bottom: 1rem;
+    text-align: center;
+    user-select: none;
+  }
+}

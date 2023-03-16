@@ -1,0 +1,47 @@
+$color-light: #a18ecb;
+$color-white: #fff;
+$color-dark: #310b2e;
+$color-pry: #5630a8;
+$color-pink: #ffa2f7;
+$color-danger: #9b1313d1;
+$transition: all 400ms ease;
+$NavHeight: 9rem;
+$shadow: 0 0 5px rgba(black, 0.7);
+
+$color-gradient: linear-gradient(
+  135deg,
+  #7a44ff,
+  #8146ff,
+  #8849ff,
+  #8f4bff,
+  #954eff,
+  #9c50ff,
+  #a153ff,
+  #a756ff
+);
+// #454cc1
+
+// Btn color linear-gradient(135deg,var(--darkPurple || #9237f6) 0,#7190f4 100%)
+
+// :root {
+//   --pry-color-hue: 252;
+//   --dark-color-lightness: 17%;
+//   --light-color-lightness: 95%;
+//   --white-color-lightness: 100%;
+
+//   --testing-color: $test-color;
+//   --color-very-light: $color-very-light; // main light background;
+//   --color-gradient: $color-gradient;
+//   --body-text: $color-pry;
+// }
+
+// $color-white: hsl(252, 30%, var(--white-color-lightness));
+// $color-light: hsl(252, 30%, var(--light-color-lightness));
+// $color-gray: hsl(var(--pry-color-hue), 15%, 65%);
+// $color-dark: hsl(252, 30%, var(--dark-color-lightness));
+// $color-pry: hsl(var(--pry-color-hue), 75%, 60%);
+// $color-sec: hsl(252, 100%, 90%);
+// $color-success: hsl(120, 95%, 65%);
+// $color-danger: hsl(0, 95%, 65%);
+// $color-black: hsl(252, 30%, 10%);
+// $dark-shadow: 0 0 0.5rem 0.05rem $color-dark;

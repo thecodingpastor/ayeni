@@ -1,0 +1,122 @@
+@import "../../styles/variables.scss";
+
+.Container {
+  border-radius: 0.5rem;
+  color: $color-pry;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: $color-light;
+  padding: 0.5rem;
+  position: relative;
+  font-size: 1.5rem;
+  min-height: 5rem;
+  animation: SlideIn 500ms forwards;
+
+  &::after {
+    height: 5px;
+    background-color: $color-pink;
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    border-radius: 0 0 0 0.5rem;
+    animation: Shrink 7000ms linear forwards;
+  }
+
+  &.ToastIsVisible {
+    animation: none !important;
+  }
+
+  &.Out {
+    animation: SlideOut 500ms forwards;
+  }
+
+  &.Error {
+    background-color: rgb(247 163 163);
+    color: rgb(116 4 4);
+    box-shadow: 0 0 7px rgba(black, 0.7);
+
+    &::after {
+      background-color: rgb(116 4 4);
+      animation: Shrink 30000ms linear forwards;
+    }
+  }
+
+  &.IsPaused {
+    animation: none !important;
+
+    &::after {
+      -webkit-animation-play-state: paused;
+      animation-play-state: paused;
+    }
+  }
+
+  .Close {
+    position: absolute;
+    font-size: 2rem;
+    z-index: 15;
+    top: 0;
+    left: -2.5rem;
+    background-color: $color-pink;
+    border-radius: 50%;
+    color: $color-pry;
+    cursor: pointer;
+
+    &.Error {
+      background-color: rgb(247 163 163);
+      color: rgb(116 4 4);
+    }
+  }
+
+  .Check,
+  .Cancel {
+    font-size: 2rem;
+    margin-right: 1rem;
+    border-radius: 50%;
+    width: max-content;
+  }
+
+  .Check {
+    color: $color-pink;
+    background-color: $color-pry;
+  }
+
+  .Cancel {
+    color: rgb(116 4 4);
+  }
+}
+
+@keyframes SlideIn {
+  0% {
+    transform: translateX(10rem);
+  }
+  70% {
+    transform: translateX(-2rem);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes SlideOut {
+  0% {
+    transform: translateX(0rem);
+  }
+  30% {
+    transform: translateX(-2rem);
+  }
+  100% {
+    transform: translateX(100vw);
+  }
+}
+@keyframes Shrink {
+  0% {
+    width: 100%;
+  }
+
+  100% {
+    width: 0;
+  }
+}

@@ -1,0 +1,27 @@
+@import "../../styles/variables.scss";
+
+.Container {
+  background-color: $color-light;
+  padding: 0.5rem 1rem;
+  border-radius: 1rem;
+  box-shadow: 0 0 5px white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-weight: 300;
+  font-size: 2rem;
+  border: 2px solid white;
+  min-height: 10rem;
+  gap: 2rem;
+
+  span {
+    background-color: $color-danger;
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 1rem;
+    cursor: pointer;
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+  }
+}

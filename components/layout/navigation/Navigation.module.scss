@@ -1,0 +1,52 @@
+@import "../../../styles/variables.scss";
+
+.Container {
+  width: 100%;
+  height: $NavHeight;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1rem;
+  overflow: hidden;
+
+  @media screen and (max-width: 780px) {
+    height: 7rem;
+  }
+
+  nav {
+    display: flex;
+    align-items: center;
+    gap: 5rem;
+    color: $color-light;
+    font-weight: bold;
+    text-transform: uppercase;
+
+    @media screen and (max-width: 750px) {
+      gap: 1rem;
+      font-size: 90%;
+    }
+
+    @media screen and (max-width: 550px) {
+      display: none;
+      visibility: hidden;
+    }
+
+    a {
+      padding: 0.5rem 1rem;
+      border-bottom: 2px solid transparent;
+      border-radius: 1rem;
+      transition: $transition;
+
+      &.Active,
+      &:hover {
+        border-bottom: 2px solid $color-pink;
+        transform: translateY(-0.2rem);
+      }
+
+      &:active {
+        transform: translateY(-0.1rem);
+      }
+    }
+  }
+}

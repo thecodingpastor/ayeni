@@ -1,0 +1,29 @@
+@import "../../../styles/variables.scss";
+
+.Container {
+  width: 10rem;
+  height: max-content;
+  background-color: $color-pink;
+  color: darken($color-pry, 10%);
+  transition: $transition;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  gap: 0.5rem;
+  cursor: pointer;
+
+  svg {
+    font-size: 2rem;
+  }
+
+  &:hover {
+    width: 14rem;
+  }
+
+  @media screen and (max-width: 750px) {
+    &:hover {
+      width: 12rem;
+    }
+  }
+}
