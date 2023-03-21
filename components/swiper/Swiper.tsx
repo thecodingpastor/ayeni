@@ -1,11 +1,11 @@
 import { useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { ProjectImagesType } from "../../features/Project/type";
+import { SingleImageType } from "../../features/Project/type";
 
 import classes from "./Swiper.module.scss";
 
 interface IProps {
-  images: ProjectImagesType[];
+  images: SingleImageType[];
 }
 
 const Index: React.FC<IProps> = ({ images }) => {

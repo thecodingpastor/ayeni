@@ -10,7 +10,7 @@ import { SingleBlogType } from "../../../features/Blog/types";
 import { AddAlertMessage } from "../../../features/UI/UISlice";
 import { useAppDispatch, useAppSelector } from "../../../fetchConfig/store";
 
-import PlaceholderImage from "../../../assets/images/small-h.png";
+import PlaceholderImage from "../../../assets/images/head.png";
 
 import classes from "./Slug.module.scss";
 
