@@ -32,7 +32,7 @@ const Home: NextPage = () => {
       </h1>
       <div className={classes.Buttons}>
         <span>Resume</span>
-        <span>Call Me</span>
+        <span>Contact</span>
       </div>
       <div className={`${classes.Socials} ${Stop ? classes.Stop : ""}`}>
         <a href="" target="__blank" className={classes.SocialIconsContainer}>
@@ -57,8 +57,8 @@ const Home: NextPage = () => {
             <Transition delay={1000} mode="fade">
               <Image
                 src={MikeImage}
-                width="400"
-                height="400"
+                width="350"
+                height="350"
                 alt="Michael Ayeni"
               />
             </Transition>

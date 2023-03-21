@@ -77,11 +77,11 @@ const CourseForm: React.FC<{ isEdit?: boolean }> = ({ isEdit }) => {
   const [ProjectFormValues, setProjectFormValues] = useState(init);
 
   const [Images, setImages] = useState<SingleImageType[]>(
-    !isEdit ? draftProject?.images : currentProject?.images
+    !isEdit ? draftProject?.images || [] : currentProject?.images || []
   );
 
   const [TagsArray, setTagsArray] = useState<string[]>(
-    !isEdit ? draftProject?.tags : currentProject?.tags
+    !isEdit ? draftProject?.tags || [] : currentProject?.tags || []
   );
 
   const {

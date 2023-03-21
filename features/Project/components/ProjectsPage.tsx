@@ -15,7 +15,7 @@ import { SelectAuth } from "../../auth/authSlice";
 const ProjectsPage = () => {
   const { user, accessToken } = useAppSelector(SelectAuth);
   const dispatch = useAppDispatch();
-  const axios = useAxiosProtected();
+  useAxiosProtected();
   const { projectLoading, projects } = useAppSelector(SelectProject);
 
   useEffect(() => {

@@ -15,6 +15,14 @@
     animation: Animation 2000ms forwards;
   }
 
+  &.Dont {
+    figure {
+      &::after {
+        content: "Now you don't 😵";
+      }
+    }
+  }
+
   figure {
     width: 90%;
     height: 90%;

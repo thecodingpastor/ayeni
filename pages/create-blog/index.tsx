@@ -1,6 +1,6 @@
 import Transition from "../../components/general/Transition";
 import ProtectedRoute from "../../components/layout/ProtectedRoute";
-import CreateBlog from "../../features/Blog/CreateBlog";
+import CreateBlog from "../../features/Blog/components/CreateBlog";
 
 const index = () => {
   return (

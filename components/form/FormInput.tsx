@@ -1,13 +1,9 @@
-import { useEffect, useState, useRef } from "react";
-import { useRouter } from "next/router";
-import { useDebounce } from "use-debounce";
+import { useState } from "react";
 
 import { MdCancel } from "react-icons/md";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
-// import { ImShrink } from "react-icons/im";
 
 import { FormInputPropsType } from "./type";
-import { useAppDispatch } from "../../fetchConfig/store";
 
 import classes from "./Input.module.scss";
 

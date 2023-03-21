@@ -1,0 +1,53 @@
+@import "../../../styles/variables.scss";
+
+.Container {
+  position: relative;
+  color: $color-light;
+  padding: 1rem;
+  text-align: center;
+
+  h1 {
+    text-align: center;
+    font-weight: 500;
+    border-top: 2px solid $color-light;
+    border-bottom: 2px solid $color-light;
+    text-transform: capitalize;
+    display: inline-block;
+    margin: 0 auto;
+  }
+
+  .ImageContainer {
+    width: 100%;
+    padding: 2rem;
+
+    > div {
+      position: unset !important;
+    }
+  }
+
+  .Img {
+    // object-fit: contain;
+    object-fit: fill;
+    width: 100% !important;
+    max-width: 80rem;
+    position: relative !important;
+    height: unset !important;
+    max-height: 60rem;
+    border-radius: 2rem;
+    margin: 0 auto;
+    box-shadow: 0 0 10px $color-light;
+  }
+
+  section {
+    text-align: justify;
+  }
+
+  .Intro {
+    font-style: italic;
+    margin-bottom: 2rem;
+  }
+
+  .Content {
+    font-weight: 600;
+  }
+}

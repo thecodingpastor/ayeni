@@ -14,11 +14,14 @@ $socials-width: 25rem;
 
   p {
     color: $color-light;
+    font-weight: 300;
 
     @media screen and (min-width: 781px) {
       margin-top: -15rem;
       width: 23rem;
       padding-left: 4rem;
+      font-size: 2.5rem;
+      line-height: 1.4;
     }
 
     @media screen and (min-width: 950px) {
@@ -27,7 +30,7 @@ $socials-width: 25rem;
   }
 
   h1 {
-    font-size: 7rem;
+    font-size: 6.5rem;
     font-family: "Kavoon", sans-serif;
     letter-spacing: 1rem;
     color: transparent;
@@ -75,9 +78,9 @@ $socials-width: 25rem;
     text-shadow: 0 0 5px $color-pink;
     margin-top: -2rem;
     max-width: max-content;
+    z-index: 5;
 
     &:hover {
-      z-index: 5;
       scale: 1.05;
       -webkit-text-stroke: 1px $color-pry;
       text-shadow: 0 0 5px $color-pink;
@@ -112,7 +115,7 @@ $socials-width: 25rem;
 
     @media screen and (min-width: 781px) {
       margin-left: 15%;
-      margin-top: -2rem;
+      margin-top: -5rem;
     }
 
     span {

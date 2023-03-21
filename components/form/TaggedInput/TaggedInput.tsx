@@ -22,7 +22,7 @@ const TaggedInput: React.FC<IProps> = ({
   const handleKeyUp = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === ",") {
       if (CurrentTag.trim() === ",") return setCurrentTag("");
-      if (TagsArray.length >= 10) {
+      if (TagsArray?.length >= 10) {
         setCurrentTag("");
         return dispatch(
           AddAlertMessage({
@@ -33,7 +33,7 @@ const TaggedInput: React.FC<IProps> = ({
 
       let tag = CurrentTag.trim().slice(0, -1).toLowerCase();
       if (CurrentTag.trim().length > 1) {
-        if (TagsArray.indexOf(tag) > -1) {
+        if (TagsArray?.indexOf(tag) > -1) {
           setCurrentTag("");
           return dispatch(
             AddAlertMessage({

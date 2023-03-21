@@ -13,6 +13,7 @@ import { SelectUI } from "../../features/UI/UISlice";
 import { SelectAuth } from "../../features/auth/authSlice";
 import FloatingButtons from "../general/FloatingButtons";
 import { SelectProject } from "../../features/Project/projectSlice";
+import { SelectBlog } from "../../features/Blog/BlogSlice";
 
 interface IProps {
   children?: React.ReactNode;
@@ -21,7 +22,8 @@ interface IProps {
 const Layout: React.FC<IProps> = (props) => {
   const { alertMessages } = useAppSelector(SelectUI);
   const { accessToken } = useAppSelector(SelectAuth);
-  const { currentProject, draftProject } = useAppSelector(SelectProject);
+  const { currentProject } = useAppSelector(SelectProject);
+  const { currentBlog } = useAppSelector(SelectBlog);
 
   const { pathname } = useRouter();
 
@@ -44,10 +46,12 @@ const Layout: React.FC<IProps> = (props) => {
 
   const allowedRoutesFloatingButtonParams = [
     "/projects/[slug]",
+    "/blogs/[slug]",
     "/create-project",
+    "/create-blog",
     "/projects/[slug]/edit",
+    "/blogs/[slug]/edit",
   ];
-  const draftMode = pathname === "/create-project" && !!draftProject?._id;
 
   return (
     <PersistLogin>
@@ -60,11 +64,16 @@ const Layout: React.FC<IProps> = (props) => {
       <ScrollUpButton />
       {accessToken && allowedRoutesFloatingButtonParams.includes(pathname) && (
         <FloatingButtons
-          // @ts-ignore
-          itemID={draftMode ? draftProject._id : currentProject?.slug}
-          // @ts-ignore
-          isPublished={currentProject?.isPublished!}
-          isDraft={draftMode}
+          itemID={
+            pathname.startsWith("/projects/[slug]")
+              ? currentProject?.slug
+              : currentBlog?.slug
+          }
+          isPublished={
+            pathname.startsWith("/projects/[slug]")
+              ? currentProject?.isPublished
+              : currentBlog?.isPublished
+          }
         />
       )}
     </PersistLogin>

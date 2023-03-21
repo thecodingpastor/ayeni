@@ -7,7 +7,6 @@ import { AddAlertMessage } from "../../features/UI/UISlice";
 import classes from "./ImageUpload.module.scss";
 import { SingleImageType } from "../../features/Project/type";
 import ImageTile from "./ImageTile";
-import ConfirmModal from "../modal/ConfirmModal";
 
 const ImageUpload: React.FC<{
   Images: SingleImageType[];
@@ -82,15 +81,15 @@ const ImageUpload: React.FC<{
 
             setFileNames([...FileNames, ...newFileNames]);
 
-            // setValue((prev: any) => {
-            //   return {
-            //     ...prev,
-            //     images: [
-            //       ...prev.images,
-            //       { url: reader.result as string, size, type, name },
-            //     ],
-            //   };
-            // });
+            setValue((prev: any) => {
+              return {
+                ...prev,
+                images: [
+                  ...prev.images,
+                  { url: reader.result as string, size, type, name },
+                ],
+              };
+            });
           } else {
             dispatch(
               AddAlertMessage({
@@ -108,16 +107,22 @@ const ImageUpload: React.FC<{
   return (
     <div className={classes.Container}>
       {Images?.length > 0 && (
-        <ImageTile
-          Images={Images}
-          setImages={setImages}
-          isEdit={isEdit}
-          setValue={setValue}
-          setFileNames={setFileNames}
-          onClick={pick}
-        />
+        <>
+          <ImageTile
+            Images={Images}
+            setImages={setImages}
+            isEdit={isEdit}
+            setValue={setValue}
+            setFileNames={setFileNames}
+            onClick={pick}
+          />
+        </>
       )}
-      {Images?.length === 0 && <span onClick={pick}>{title}</span>}
+      {Images?.length === 0 && (
+        <span onClick={pick} className="pointer">
+          {title}
+        </span>
+      )}
       <input
         type="file"
         name="fileToUpload"

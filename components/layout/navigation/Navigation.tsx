@@ -5,9 +5,6 @@ import { useRouter } from "next/router";
 import Logo from "./Logo";
 import SideNav from "./SideNav";
 import HamburgerContainer from "./HamburgerContainer";
-import ContactButton from "./ContactButton";
-import Modal from "../../modal/Modal";
-import ContactForm from "../../general/ContactForm";
 
 import { RiSuitcase2Line } from "react-icons/ri";
 import { FaBloggerB } from "react-icons/fa";
@@ -20,14 +17,14 @@ import navData from "./data";
 import { MenuMode } from "./types";
 
 import classes from "./Navigation.module.scss";
+import { SelectAuth } from "../../../features/auth/authSlice";
 
 const Navigation = () => {
   const dispatch = useAppDispatch();
-  const { accessToken } = useAppSelector((state) => state.auth);
+  const { accessToken } = useAppSelector(SelectAuth);
   const { pathname } = useRouter();
 
   const [ShowSideNav, setShowSideNav] = useState(false);
-  const [ShowContactModal, setShowContactModal] = useState(false);
   const [Animate, setAnimate] = useState<MenuMode>("x-leave");
 
   const handleHamburgerClick = () => {
@@ -40,10 +37,6 @@ const Navigation = () => {
     }
   };
 
-  const ToggleContactModal = () => {
-    setShowContactModal((prev) => !prev);
-  };
-
   const handleLogout = () => {
     setShowSideNav(false);
     dispatch(LogOut());
@@ -51,14 +44,6 @@ const Navigation = () => {
 
   return (
     <>
-      <Modal
-        isOpen={ShowContactModal}
-        close={() => setShowContactModal(false)}
-        disableBackgroundClick
-      >
-        <ContactForm />
-      </Modal>
-
       <header className={classes.Container}>
         <Logo />
 
@@ -69,11 +54,7 @@ const Navigation = () => {
           setAnimate={setAnimate}
         />
 
-        <SideNav
-          onClose={handleHamburgerClick}
-          animate={Animate}
-          ToggleContactModal={ToggleContactModal}
-        />
+        <SideNav onClose={handleHamburgerClick} animate={Animate} />
 
         <nav>
           {navData.map((item) => (
@@ -85,7 +66,7 @@ const Navigation = () => {
               {item.text}
             </Link>
           ))}
-          {accessToken ? (
+          {accessToken && (
             <div>
               <Link
                 href="/create-blog"
@@ -103,8 +84,6 @@ const Navigation = () => {
                 <AiOutlineLogout />
               </Link>
             </div>
-          ) : (
-            <ContactButton onClick={ToggleContactModal} />
           )}
         </nav>
       </header>

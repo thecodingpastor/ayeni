@@ -1,4 +1,4 @@
-@import "../../styles/variables.scss";
+@import "../../../styles/variables.scss";
 
 .Container {
   color: $color-dark;
@@ -8,18 +8,24 @@
   flex-direction: column;
   overflow: hidden;
 
+  &:hover {
+    img {
+      scale: 1.05;
+    }
+  }
+
   @media screen and (max-width: 400px) {
     max-width: 32rem;
     margin: 0 auto;
   }
 
   .Details {
-    background: lighten($color-pink, 5%);
     background: $color-light;
     border-radius: 0 0 2rem 2rem;
     border: 2px solid white;
     border-top: none;
     text-align: justify;
+    min-height: 25rem;
   }
 
   .Heading {
@@ -57,35 +63,17 @@
     line-height: 1.5;
   }
 
-  footer {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 0.8rem;
-    font-size: 1.5rem;
+  .ImageContainer {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    height: 20rem;
+  }
 
-    .LikeCountContainer {
-      position: relative;
-      display: inline-block;
-      margin: 1rem 0;
-      display: flex;
-      align-items: center;
-      font-size: 2rem;
-
-      span {
-        margin-top: -2rem;
-        border-radius: 50%;
-        z-index: 0;
-        font-size: 1rem;
-        width: 1.8rem;
-        height: 1.8rem;
-        color: $color-pry;
-        background: white;
-        border: 2px solid $color-pry;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-      }
-    }
+  img {
+    min-height: 20rem;
+    transition: 300ms all;
+    width: 100%;
+    object-fit: cover;
   }
 }

@@ -1,25 +1,22 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { AddAlertMessage } from "../UI/UISlice";
-import { AxiosInstance } from "axios";
 import axios from "../../fetchConfig/api/axios";
 
 const defaultErrorMessage = "Something went wrong, please try again later.";
 
-export const GetAllProjects = createAsyncThunk(
-  "project/GetAllProjectsAuth",
+export const GetAllBlogs = createAsyncThunk(
+  "blog/GetAllBlogs",
   async (userId: string, { dispatch, rejectWithValue }) => {
     try {
       const response = userId
-        ? await axios.get("/projects/get?userId=" + userId)
-        : await axios.get("/projects/get");
+        ? await axios.get("/blogs/get?userId=" + userId)
+        : await axios.get("/blogs/get");
 
-      return response.data.data;
+      return response.data;
     } catch (err: any) {
       dispatch(
         AddAlertMessage({
-          message:
-            err.response.data.message ||
-            "Could not fetch projects at this time. Please try later",
+          message: err.response.data.message || defaultErrorMessage,
         })
       );
       return rejectWithValue(err);
@@ -27,11 +24,75 @@ export const GetAllProjects = createAsyncThunk(
   }
 );
 
-export const GetSingleProjectFromBackend = createAsyncThunk(
-  "project/GetSingleProjectFromBackend",
+export const CreateBlog = createAsyncThunk(
+  "blog/CreateBlog",
+  async (data: any, { dispatch, rejectWithValue }) => {
+    try {
+      const response = await axios.post("/blogs", data);
+
+      return response.data;
+    } catch (err: any) {
+      dispatch(
+        AddAlertMessage({
+          message: err.response.data.message || defaultErrorMessage,
+        })
+      );
+      return rejectWithValue(err);
+    }
+  }
+);
+
+export const UpdateBlog = createAsyncThunk(
+  "blog/UpdateBlog",
+  async (data: any, { dispatch, rejectWithValue }) => {
+    try {
+      const response = await axios.patch("/blogs", data);
+      dispatch(
+        AddAlertMessage({
+          message: "Blog updated successfully",
+          type: "success",
+        })
+      );
+      return response.data;
+    } catch (err: any) {
+      dispatch(
+        AddAlertMessage({
+          message: err.response.data.message || defaultErrorMessage,
+        })
+      );
+      return rejectWithValue(err);
+    }
+  }
+);
+
+export const DeleteBlog = createAsyncThunk(
+  "blog/DeleteBlog",
   async (slug: string, { dispatch, rejectWithValue }) => {
     try {
-      const response = await axios.get("/projects/" + slug);
+      const response = await axios.delete("/blogs?slug=" + slug);
+      dispatch(
+        AddAlertMessage({
+          message: "Blog deleted",
+          type: "success",
+        })
+      );
+      return response.data;
+    } catch (err: any) {
+      dispatch(
+        AddAlertMessage({
+          message: err.response.data.message || defaultErrorMessage,
+        })
+      );
+      return rejectWithValue(err);
+    }
+  }
+);
+
+export const GetSingleBlogFromBackend = createAsyncThunk(
+  "blog/GetSingleBlogFromBackend",
+  async (slug: string, { dispatch, rejectWithValue }) => {
+    try {
+      const response = await axios.get("/blogs/" + slug);
       return response.data;
     } catch (err: any) {
       dispatch(
@@ -46,88 +107,14 @@ export const GetSingleProjectFromBackend = createAsyncThunk(
   }
 );
 
-export const UpdateProject = createAsyncThunk(
-  "project/UpdateProject",
-  async (data: any, { dispatch, rejectWithValue }) => {
-    try {
-      const response = await axios.patch("/projects/", data);
-      dispatch(
-        AddAlertMessage({
-          message: "Project updated successfully",
-          type: "success",
-        })
-      );
-      return response.data;
-    } catch (err: any) {
-      dispatch(
-        AddAlertMessage({
-          message:
-            err.response.data.message ||
-            "Could not edit project at this time. Please try later",
-        })
-      );
-      return rejectWithValue(err);
-    }
-  }
-);
-
-export const CreateProject = createAsyncThunk(
-  "project/CreateProject",
-  async (body: any, { dispatch, rejectWithValue }) => {
-    try {
-      const response = await axios.post("/projects/", body);
-
-      dispatch(
-        AddAlertMessage({
-          message: "Project created successfully",
-          type: "success",
-        })
-      );
-
-      return response.data;
-    } catch (err: any) {
-      dispatch(
-        AddAlertMessage({
-          message: err.response.data.message || defaultErrorMessage,
-        })
-      );
-      return rejectWithValue(err);
-    }
-  }
-);
-
-export const DeleteProject = createAsyncThunk(
-  "project/DeleteProject",
-  async (slug: string, { dispatch, rejectWithValue }) => {
-    try {
-      const response = await axios.delete("/projects?slug=" + slug);
-      dispatch(
-        AddAlertMessage({
-          message: response.data || "Project deleted successfully",
-          type: "success",
-        })
-      );
-
-      return response.data;
-    } catch (err: any) {
-      dispatch(
-        AddAlertMessage({
-          message: err.response.data.message || defaultErrorMessage,
-        })
-      );
-      return rejectWithValue(err);
-    }
-  }
-);
-
-export const PublishAndUnpublishProject = createAsyncThunk(
-  "project/PublishAndUnpublishProject",
+export const PublishAndUnpublishBlog = createAsyncThunk(
+  "blog/PublishAndUnpublishBlog",
   async (
     { slug, isPublished }: { slug: string; isPublished: boolean },
     { dispatch, rejectWithValue }
   ) => {
     try {
-      const response = await axios.put("/projects/publish", {
+      const response = await axios.put("/blogs/publish", {
         slug,
         isPublished,
       });
@@ -135,8 +122,8 @@ export const PublishAndUnpublishProject = createAsyncThunk(
       dispatch(
         AddAlertMessage({
           message: response.data.isPublished
-            ? "Project published successfully"
-            : "Project will no longer appear to the public",
+            ? "Blog published successfully"
+            : "Blog will no longer appear to the public",
           type: "success",
         })
       );
@@ -153,12 +140,12 @@ export const PublishAndUnpublishProject = createAsyncThunk(
   }
 );
 
-export const DeleteProjectImageFromCloud = createAsyncThunk(
-  "project/DeleteProjectImageFromCloud",
+export const DeleteBlogImageFromCloud = createAsyncThunk(
+  "blog/DeleteBlogImageFromCloud",
   async (data: any, { dispatch, rejectWithValue }) => {
     try {
       const response = await axios.delete(
-        `/delete-image?model=project&slug=${data.slug}&imageCloudId=${data.imageCloudId}`
+        `/delete-image?model=blog&slug=${data.slug}&imageCloudId=${data.imageCloudId}`
       );
       dispatch(
         AddAlertMessage({

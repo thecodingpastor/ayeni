@@ -2,13 +2,21 @@
 
 .Container {
   position: relative;
+  // max-width: 80rem;
+  // display: flex;
+  // justify-content: center;
+  // align-items: center;
+  // gap: 1rem;
   width: 100%;
-  max-width: 80rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 1rem;
-  overflow-x: auto;
+
+  .Inner {
+    gap: 1rem;
+    max-width: 80rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow-x: auto;
+  }
 
   @media screen and (max-width: 500px) {
     &::-webkit-scrollbar {
@@ -47,5 +55,20 @@
       color: $color-danger;
       border-radius: 50%;
     }
+  }
+
+  .Upload {
+    position: absolute;
+    top: 50%;
+    left: -2rem;
+    color: $color-dark;
+    background-color: white;
+    font-weight: 600;
+    font-size: 2.5rem;
+    padding: 0.5rem;
+    width: 3rem;
+    height: 3rem;
+    border-radius: 1rem;
+    z-index: 1;
   }
 }

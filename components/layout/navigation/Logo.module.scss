@@ -5,6 +5,12 @@
   background: linear-gradient(135deg, $color-pry, $color-pink);
   padding: 4rem;
   position: relative;
+  transition: all 2000ms;
+  transform: translateY(-9rem);
+
+  &.Show {
+    transform: translateY(0);
+  }
 
   @media screen and (max-width: 780px) {
     padding: 3rem;

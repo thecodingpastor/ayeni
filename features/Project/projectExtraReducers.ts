@@ -7,7 +7,7 @@ import {
   UpdateProject,
   PublishAndUnpublishProject,
   GetSingleProjectFromBackend,
-  DeleteImageFromCloud,
+  DeleteProjectImageFromCloud,
 } from "./projectApi";
 import { InitialProjectStateType } from "./type";
 
@@ -65,7 +65,7 @@ const ProjectExtraReducers = (
   });
   // ============= DeleteProject ======================
   builder.addCase(DeleteProject.pending, (state, action) => {
-    state.projectLoading = action.meta.arg;
+    state.projectLoading = "delete-project";
   });
   builder.addCase(DeleteProject.rejected, (state) => {
     state.projectLoading = null;
@@ -74,14 +74,14 @@ const ProjectExtraReducers = (
     state.projectLoading = null;
     state.projects = state.projects.filter((p) => action.meta.arg !== p.slug);
   });
-  // ============= DeleteImageFromCloud ======================
-  builder.addCase(DeleteImageFromCloud.pending, (state, action) => {
-    state.projectLoading = "delete-image-from-cloud";
+  // ============= DeleteProjectImageFromCloud ======================
+  builder.addCase(DeleteProjectImageFromCloud.pending, (state, action) => {
+    state.projectLoading = "delete-image";
   });
-  builder.addCase(DeleteImageFromCloud.rejected, (state) => {
+  builder.addCase(DeleteProjectImageFromCloud.rejected, (state) => {
     state.projectLoading = null;
   });
-  builder.addCase(DeleteImageFromCloud.fulfilled, (state, action) => {
+  builder.addCase(DeleteProjectImageFromCloud.fulfilled, (state, action) => {
     state.projectLoading = null;
     state.projects =
       state.projects.length > 0
@@ -95,7 +95,7 @@ const ProjectExtraReducers = (
   });
   // ============= PublishAndUnpublishProject ======================
   builder.addCase(PublishAndUnpublishProject.pending, (state) => {
-    state.projectLoading = "default";
+    state.projectLoading = "publish";
   });
   builder.addCase(PublishAndUnpublishProject.rejected, (state) => {
     state.projectLoading = null;

@@ -1,5 +1,5 @@
 import {
-  VALIDATOR_IMAGE_URL,
+  // VALIDATOR_IMAGE_URL,
   VALIDATOR_MAX,
   VALIDATOR_MAXLENGTH,
   VALIDATOR_MIN,
@@ -22,14 +22,14 @@ export const CreateBlogFormInputs = [
     errorText: "Description should be between 10 - 300 characters",
     element: "textarea",
   },
-  {
-    id: "image",
-    name: "image",
-    placeholder: "Image URL",
-    validators: [VALIDATOR_IMAGE_URL()],
-    errorText: "Invalid Image URL",
-    type: "url",
-  },
+  // {
+  //   id: "image",
+  //   name: "image",
+  //   placeholder: "Image URL",
+  //   validators: [VALIDATOR_IMAGE_URL()],
+  //   errorText: "Invalid Image URL",
+  //   type: "url",
+  // },
   {
     id: "estimatedReadTime",
     name: "estimatedReadTime",

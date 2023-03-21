@@ -5,13 +5,9 @@ import { LogOut } from "../../../features/auth/authApi";
 
 type IProps = {
   handleClose: () => void;
-  handleToggleContactModal: () => void;
 };
 
-const SideNavContent: React.FC<IProps> = ({
-  handleClose,
-  handleToggleContactModal,
-}) => {
+const SideNavContent: React.FC<IProps> = ({ handleClose }) => {
   const { accessToken } = useAppSelector((state) => state.auth);
   const dispatch = useAppDispatch();
 
@@ -34,7 +30,6 @@ const SideNavContent: React.FC<IProps> = ({
           className="pointer"
           onClick={() => {
             handleClose();
-            handleToggleContactModal();
           }}
         >
           Contact

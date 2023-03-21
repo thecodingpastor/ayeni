@@ -19,10 +19,15 @@ import {
   GetCurrentProject,
   SelectProject,
 } from "../../features/Project/projectSlice";
+import { GetCurrentBlog } from "../../features/Blog/BlogSlice";
 
 import ConfirmModal from "../modal/ConfirmModal";
 
 import classes from "./FloatingButtons.module.scss";
+import {
+  DeleteBlog,
+  PublishAndUnpublishBlog,
+} from "../../features/Blog/BlogApi";
 
 interface IProps {
   itemID: string;
@@ -35,26 +40,35 @@ const FloatingButtons: React.FC<IProps> = ({
   isPublished,
   isDraft,
 }) => {
-  const { pathname, push, back } = useRouter();
+  const { pathname, push, back, replace } = useRouter();
 
   const dispatch = useAppDispatch();
   const { confirmModalIsOpen } = useAppSelector(SelectUI);
-  const { draftProject } = useAppSelector(SelectProject);
+  const { draftProject, projectLoading } = useAppSelector(SelectProject);
   useAxiosProtected();
 
   const draftMode = isDraft && draftProject?._id;
-  const editMode = pathname === "/projects/[slug]/edit";
-  const createMode = pathname === "/create-project";
+  const editMode =
+    pathname === "/projects/[slug]/edit" || pathname === "/blogs/[slug]/edit";
+  const createMode =
+    pathname === "/create-project" || pathname === "/create-blog";
+  const deletePaths = ["/projects/[slug]", "/blogs/[slug]"];
   const removeEditAndPublishButton = draftMode || editMode || createMode;
   const showDeleteButton =
     editMode ||
-    pathname === "/projects/[slug]" ||
+    deletePaths.includes(pathname) ||
     (createMode && !!draftProject?._id);
 
   const HandleDelete = () => {
-    dispatch(DeleteProject(itemID)).then(() => {
-      push("/projects");
-    });
+    if (pathname.startsWith("/projects/[slug]")) {
+      dispatch(DeleteProject(itemID)).then(() => {
+        replace("/projects");
+      });
+    } else if (pathname.startsWith("/blogs/[slug]")) {
+      dispatch(DeleteBlog(itemID)).then(() => {
+        replace("/blogs");
+      });
+    }
   };
 
   const CloseConfirmModal = () => {
@@ -62,17 +76,31 @@ const FloatingButtons: React.FC<IProps> = ({
   };
 
   const GetProjectToEdit = () => {
-    dispatch(GetCurrentProject(itemID));
-    push("/projects/" + itemID + "/edit");
+    if (pathname.startsWith("/projects/[slug]")) {
+      dispatch(GetCurrentProject(itemID));
+      push("/projects/" + itemID + "/edit");
+    } else if (pathname.startsWith("/blogs/[slug]")) {
+      dispatch(GetCurrentBlog(itemID));
+      push("/blogs/" + itemID + "/edit");
+    }
   };
 
   const HandlePublish = (itemID: string, isPublished: boolean) => {
-    dispatch(
-      PublishAndUnpublishProject({
-        slug: itemID,
-        isPublished,
-      })
-    );
+    if (pathname.startsWith("/projects/[slug]")) {
+      dispatch(
+        PublishAndUnpublishProject({
+          slug: itemID,
+          isPublished,
+        })
+      );
+    } else if (pathname.startsWith("/blogs/[slug]")) {
+      dispatch(
+        PublishAndUnpublishBlog({
+          slug: itemID,
+          isPublished,
+        })
+      );
+    }
   };
 
   return (
@@ -99,10 +127,11 @@ const FloatingButtons: React.FC<IProps> = ({
           isOpen={confirmModalIsOpen === "DeleteProject"}
           close={CloseConfirmModal}
           proceedWithAction={HandleDelete}
+          loading={projectLoading === "delete-project"}
           closeButtonText={
-            isDraft && pathname === "/create-project"
-              ? "Delete Draft"
-              : "Delete Project"
+            pathname.startsWith("/projects/[slug]")
+              ? "Delete Project"
+              : "Delete Blog"
           }
         />
       )}
@@ -110,6 +139,7 @@ const FloatingButtons: React.FC<IProps> = ({
         <ConfirmModal
           isOpen={confirmModalIsOpen === "PublishProject"}
           close={CloseConfirmModal}
+          loading={projectLoading === "publish"}
           proceedWithAction={HandlePublish}
           closeButtonText="Delete Project"
           message={

@@ -1,20 +1,21 @@
 import { NextApiRequest, NextApiResponse } from "next";
 
 import connectDB from "../../../utils/connectDB";
-import Project from "../../../models/projectModel";
+import Blog from "../../../models/blogModel";
 
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
   const { slug } = req.query;
+
   if (req.method === "GET") {
     try {
       await connectDB();
-      const project = await Project.findOne({ slug });
-      if (!project) return res.json({ message: "Project not found" });
+      const blog = await Blog.findOne({ slug });
+      if (!blog) return res.json({ message: "Blog not found" });
 
-      res.json(project);
+      res.json(blog);
     } catch (err) {
       res.status(500).json({ message: err.message });
     }

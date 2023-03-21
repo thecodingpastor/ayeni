@@ -1,6 +1,6 @@
 const navData = [
   { href: "/about", text: "About" },
-  { href: "/blog", text: "Blog" },
+  { href: "/blogs", text: "Blog" },
   { href: "/projects", text: "Projects" },
 ];
 

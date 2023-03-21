@@ -1,18 +1,28 @@
-export interface SinglePostTypes {
-  id: string;
-  title: string;
-  intro: string;
-  content: string;
-  img: string;
-  readTime: string;
-  createdAt: Date;
-  slug: string;
-  comments: CommentTypes[];
-  likes: any[];
+export interface BlogImageType {
+  public_id?: string;
+  url?: string;
+  size?: number;
+  secure_url?: string;
+  type?: string;
 }
 
-export interface CommentTypes {
-  id: string;
-  author: string;
-  text: string;
+export interface InitialBlogStateType {
+  blogs: SingleBlogType[];
+  blogLoading: string;
+  draftBlog: SingleBlogType;
+  currentBlog: SingleBlogType;
+}
+
+export interface SingleBlogType {
+  _id?: string;
+  slug?: string;
+  title: string;
+  intro: string;
+  mainContent: string;
+  images: BlogImageType[];
+  tags: string[];
+  estimatedReadTime: string;
+  createdAt?: Date;
+  isPublished?: boolean;
+  updatedAt?: Date;
 }
