@@ -104,7 +104,7 @@ const index: React.FC<ProjectType> = (props) => {
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const res = await fetch(
     process.env.NODE_ENV === "production"
-      ? "https://irep-livid.vercel.app/api/projects/" + context.params?.slug
+      ? process.env.LIVE_SITE + "/api/projects/" + context.params?.slug
       : "http://localhost:3000/api/projects/" + context.params?.slug
   );
   const data = await res.json();

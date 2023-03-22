@@ -62,7 +62,7 @@ const SingleBlogPage = (props: SingleBlogType) => {
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const res = await fetch(
     process.env.NODE_ENV === "production"
-      ? "https://irep-livid.vercel.app/api/blogs/" + context.params?.slug
+      ? process.env.LIVE_SITE + "/api/blogs/" + context.params?.slug
       : "http://localhost:3000/api/blogs/" + context.params?.slug
   );
   const data = await res.json();
