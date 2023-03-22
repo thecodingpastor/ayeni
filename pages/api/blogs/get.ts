@@ -18,7 +18,9 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
         user = await User.findById(userId);
       }
 
-      const blogs = await Blog.find(user?._id ? {} : { isPublished: true });
+      const blogs = await Blog.find(
+        user?._id ? {} : { isPublished: true }
+      ).sort("-createdAt");
 
       if (!blogs)
         return res
