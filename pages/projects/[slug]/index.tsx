@@ -4,8 +4,6 @@ import { GetServerSideProps } from "next";
 import { useRouter } from "next/router";
 import parser from "html-react-parser";
 
-import axios from "../../../fetchConfig/api/axios";
-
 import { ProjectType } from "../../../features/Project/type";
 
 import Transition from "../../../components/general/Transition";
@@ -93,7 +91,7 @@ const index: React.FC<ProjectType> = (props) => {
         </div>
 
         <section className={classes.MainContent}>
-          <h3 className="up-down-lines ">My Thought Process</h3>
+          <h3 className="up-down-lines ">More About The Project</h3>
           <div>{parser(currentProject?.mainContent || "")}</div>
         </section>
       </div>

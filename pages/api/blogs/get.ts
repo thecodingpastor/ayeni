@@ -20,7 +20,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
 
       const blogs = await Blog.find(
         user?._id ? {} : { isPublished: true }
-      ).sort("-createdAt");
+      ).sort("-updatedAt");
 
       if (!blogs)
         return res

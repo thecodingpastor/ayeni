@@ -17,15 +17,15 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
         user = await User.findById(userId);
 
         if (user) {
-          projects = await Project.find().sort("-createdAt");
+          projects = await Project.find().sort("-updatedAt");
         } else {
           projects = await Project.find({ isPublished: true })
-            .sort("-createdAt")
+            .sort("-updatedAt")
             .select("-isPublished -__v -mainContent");
         }
       } else {
         projects = await Project.find({ isPublished: true })
-          .sort("-createdAt")
+          .sort("-updatedAt")
           .select("-isPublished -__v -mainContent");
       }
       if (!projects)

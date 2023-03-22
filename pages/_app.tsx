@@ -13,6 +13,7 @@ import "swiper/scss";
 // Store
 import { store } from "../fetchConfig/store";
 import { Provider } from "react-redux";
+import RouteLoading from "../components/loaders/RouteLoading";
 
 function MyApp({ Component, pageProps }: AppProps): JSX.Element {
   return (
@@ -25,7 +26,7 @@ function MyApp({ Component, pageProps }: AppProps): JSX.Element {
         />
         <link rel="icon" href="/small-head.png" />
       </Head>
-
+      <RouteLoading />
       <Layout>
         <Component {...pageProps} />
       </Layout>
