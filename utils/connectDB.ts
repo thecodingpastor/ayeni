@@ -9,13 +9,14 @@ const connectDB = async () => {
   mongoose.set("strictQuery", false);
   return (
     mongoose
-      .connect(connectionString, {
-        // @ts-ignore
-        useNewUrlParser: true,
-        useUnifiedTopology: true,
-        useFindAndModify: false,
-        useCreateIndex: true,
-      })
+      .connect(connectionString)
+      // .connect(connectionString, {
+      //   // @ts-ignore
+      //   useNewUrlParser: true,
+      //   useUnifiedTopology: true,
+      //   useFindAndModify: false,
+      //   useCreateIndex: true,
+      // })
       .then(() => {
         // console.log("DB Connection Successful");
       })
