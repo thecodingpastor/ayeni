@@ -20,7 +20,9 @@ export default async function handler(
       { refreshToken: "" }
     );
 
-    const cookies = new Cookies(req, res);
+    const cookies = new Cookies(req, res, {
+      secure: process.env.NODE_ENV === "production" /* request is secure */,
+    });
 
     // Set cookies to expired
     cookies.set("michaelayeni", "", CookieOptions);

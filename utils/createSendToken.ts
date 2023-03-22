@@ -20,7 +20,9 @@ const createSendToken = async (
       refreshToken,
     });
 
-    const cookies = new Cookies(req, res);
+    const cookies = new Cookies(req, res, {
+      secure: process.env.NODE_ENV === "production" /* request is secure */,
+    });
     cookies.set("michaelayeni", refreshToken, CookieOptions);
 
     user.password = undefined; //Removes password from the output
