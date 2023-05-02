@@ -1,31 +1,28 @@
-import MyImage from "../../components/general/MyImage";
+import Head from "next/head";
+
 import Transition from "../../components/general/Transition";
 
-// import Family from "../../assets/images/family.jpg";
-import Family from "../../assets/images/familia3.jpg";
-
 import classes from "./About.module.scss";
-import Image from "next/image";
 
 const index = () => {
   return (
     <Transition mode="scale-out" className={classes.Container}>
+      <Head>
+        <title>About Michael Ayeni</title>
+      </Head>
       <h1 className="text-center">Meet Michael Ayeni</h1>
-      <div className={classes.ImageContainer}>
-        <Image src={Family} alt="Mike's Family" fill />
-      </div>
       <section>
         <p>
           Hello everyone, my name is Michael Ayeni and I am a Christian. I was
           born, raised and I currently live in Lagos, Nigeria, with my beautiful
-          wife Anu and our two daughters Tobiloba and Michelle. I am passionate
+          wife Anu and our two daughters, Tobiloba and Michelle. I am passionate
           about learning and building things relating to JavaScript fullstack
           web development.
         </p>
         <p>
           I started programming about six years ago as a self-taught developer.
           I am always fascinated about how computer applications work, so my
-          journey into web development started out of curiosity. I started out
+          journey into web development began out of curiosity. I started out
           with Vanilla PHP for about 18 months, building a few applications
           along the way, before I switched to the world of JavaScript.
         </p>
@@ -72,8 +69,7 @@ const index = () => {
           on{" "}
           <a href="https://vercel.com/" target="_blank">
             Vercel
-          </a>
-          ,{" "}
+          </a>{" "}
           <a href="https://www.netlify.com/" target="_blank">
             Netlify
           </a>{" "}
@@ -81,12 +77,25 @@ const index = () => {
           <a href="https://www.digitalocean.com/" target="_blank">
             Digital Ocean
           </a>
-          .{" "}
+          . I am currently venturing into{" "}
+          <a href="https://www.aws.amazon.com/" target="_blank">
+            AWS
+          </a>{" "}
+          <a href="https://www.docker.com/" target="_blank">
+            Docker
+          </a>{" "}
+          <a href="https://www.kubernetes.io/" target="_blank">
+            Kubernetes
+          </a>{" "}
+          and{" "}
+          <a href="https://www.reactnative.dev/" target="_blank">
+            React Native
+          </a>
         </p>{" "}
         <p>
-          I currently work as a freelance full stack web developer, and I am
-          hoping to get a remote or on-site web development role in one of the
-          TECH giant companies someday. My resume is available on LinkedIn.
+          At the moment, I work as a freelance full stack web developer, and I
+          am hoping to get a remote or on-site web development role in one of
+          the TECH giant companies someday. My resume is available on LinkedIn.
           Follow me on Twitter at{" "}
           <a href="https://twitter.com/thecodingpastor" target="_blank">
             @thecodingpastor
@@ -95,12 +104,18 @@ const index = () => {
           <a href="https://github.com/thecodingpastor" target="_blank">
             Github
           </a>
-          . I intend to start a YouTube channel to help others who are seeking
-          to learn web development. You can reach me majorly via my e-mail{" "}
+          . I intend to start a{" "}
+          <a
+            href="https://www.youtube.com/channel/UCbyIRwis0o_0Wi5P7CvXcfw"
+            target="_blank"
+          >
+            YouTube channel
+          </a>{" "}
+          soon to help others who are seeking to learn web development. You can
+          reach me majorly via my e-mail{" "}
           <a href="mailto: thecodingpastor@gmail.com" target="_blank">
             thecodingpastor@gmail.com
           </a>
-          .
         </p>
       </section>
     </Transition>

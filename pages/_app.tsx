@@ -22,7 +22,7 @@ function MyApp({ Component, pageProps }: AppProps): JSX.Element {
         <title>Michael Ayeni </title>
         <meta
           name="description"
-          content="The official website of Michael Ayeni, a full stack developer. Works with Node, React, Typescript, MongoDB, PostgreSQL"
+          content="The official website of Michael Ayeni, a full stack developer. Works with Node, React, React Native, Typescript, MongoDB, MySQL"
         />
         <link rel="icon" href="/small-head.png" />
       </Head>

@@ -44,7 +44,7 @@ const SingleBlogPage = (props: SingleBlogType) => {
           src={currentBlog?.images[0].secure_url || PlaceholderImage}
           alt={currentBlog?.title || ""}
           fill
-          blurDataURL="/public/images/small-h.png"
+          blurDataURL="/public/images/small-head.png"
           placeholder="blur"
           className={classes.Img}
         />

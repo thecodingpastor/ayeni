@@ -11,6 +11,7 @@ import AuthPageLoading from "../../../components/loaders/AuthPageLoading";
 import { GetAllProjects } from "../projectApi";
 import useAxiosProtected from "../../../hooks/useAxiosProtected";
 import { SelectAuth } from "../../auth/authSlice";
+import Head from "next/head";
 
 const ProjectsPage = () => {
   const { user, accessToken } = useAppSelector(SelectAuth);
@@ -37,6 +38,9 @@ const ProjectsPage = () => {
 
   return (
     <Transition mode="scale-out" className={classes.Container}>
+      <Head>
+        <title>All Projects | Michael Ayeni</title>
+      </Head>
       <p>
         As a self-taught Fullstack Developer, I believe the best way to show my
         abilities is to build applications of different range and sizes. Here

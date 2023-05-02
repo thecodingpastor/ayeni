@@ -2,14 +2,12 @@ import { NextApiRequest, NextApiResponse } from "next";
 
 import connectDB from "../../../utils/connectDB";
 import Blog from "../../../models/blogModel";
-import Protect from "../../../middleware/protect";
 import User from "../../../models/userModel";
 import { UserInterface } from "../../../general-types";
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   if (req.method === "GET") {
     const { userId } = req.query;
-
     try {
       let user: UserInterface;
 
@@ -38,4 +36,4 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   }
 };
 
-export default Protect(handler);
+export default handler;
