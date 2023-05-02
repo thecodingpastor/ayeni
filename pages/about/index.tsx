@@ -16,8 +16,8 @@ const index = () => {
           Hello everyone, my name is Michael Ayeni and I am a Christian. I was
           born, raised and I currently live in Lagos, Nigeria, with my beautiful
           wife Anu and our two daughters, Tobiloba and Michelle. I am passionate
-          about learning and building things relating to JavaScript fullstack
-          web development.
+          about learning and building applications relating to JavaScript
+          fullstack web development.
         </p>
         <p>
           I started programming about six years ago as a self-taught developer.

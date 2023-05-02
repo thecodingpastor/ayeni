@@ -24,17 +24,7 @@ const SideNavContent: React.FC<IProps> = ({ handleClose }) => {
         </span>
       ))}
 
-      {!accessToken ? (
-        <a
-          style={{ display: "flex", alignItems: "center", gap: "1rem" }}
-          className="pointer"
-          onClick={() => {
-            handleClose();
-          }}
-        >
-          Contact
-        </a>
-      ) : (
+      {accessToken && (
         <>
           <span onClick={handleClose}>
             <Link href="/create-blog">Create Blog</Link>
