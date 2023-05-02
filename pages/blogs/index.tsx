@@ -13,26 +13,26 @@ import SingleBlogPost from "../../features/Blog/components/SingleBlogPost";
 import classes from "./BlogPage.module.scss";
 
 const BlogPage = () => {
-  const dispatch = useAppDispatch();
-  const { accessToken, user } = useAppSelector(SelectAuth);
-  const { blogLoading, blogs } = useAppSelector(SelectBlog);
+  // const dispatch = useAppDispatch();
+  // const { accessToken, user } = useAppSelector(SelectAuth);
+  // const { blogLoading, blogs } = useAppSelector(SelectBlog);
 
-  useEffect(() => {
-    if (!accessToken && blogs.length === 0) {
-      dispatch(GetAllBlogs(""));
-    } else if (accessToken && blogs.length === 0) {
-      dispatch(GetAllBlogs(user?._id));
-    }
-  }, [accessToken]);
+  // useEffect(() => {
+  //   if (!accessToken && blogs.length === 0) {
+  //     dispatch(GetAllBlogs(""));
+  //   } else if (accessToken && blogs.length === 0) {
+  //     dispatch(GetAllBlogs(user?._id));
+  //   }
+  // }, [accessToken]);
 
-  if (blogLoading === "default" && blogs.length === 0)
-    return <AuthPageLoading />;
-  if (blogs.length === 0 && blogLoading === null)
-    return (
-      <Transition mode="scale-out" className={classes.Container}>
-        <h3>There are no blogs yet.</h3>
-      </Transition>
-    );
+  // if (blogLoading === "default" && blogs.length === 0)
+  //   return <AuthPageLoading />;
+  // if (blogs.length === 0 && blogLoading === null)
+  //   return (
+  //     <Transition mode="scale-out" className={classes.Container}>
+  //       <h3>There are no blogs yet.</h3>
+  //     </Transition>
+  //   );
 
   return (
     <Transition mode="scale-out">
@@ -40,9 +40,10 @@ const BlogPage = () => {
         <title>All Blogs | Michael Ayeni</title>
       </Head>
       <div className={classes.Container}>
-        {blogs.map((blog) => (
+        <h3 className="text-center">There are no blogs yet. Working on it.</h3>
+        {/* {blogs.map((blog) => (
           <SingleBlogPost {...blog} key={blog._id} />
-        ))}
+        ))} */}
       </div>
     </Transition>
   );

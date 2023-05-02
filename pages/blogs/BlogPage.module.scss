@@ -1,26 +1,26 @@
-.Container {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(23rem, 1fr));
-  justify-content: center;
-  gap: 2rem;
-  margin: 2rem;
+// .Container {
+//   display: grid;
+//   grid-template-columns: repeat(auto-fill, minmax(23rem, 1fr));
+//   justify-content: center;
+//   gap: 2rem;
+//   margin: 2rem;
 
-  @media screen and (max-width: 779px) {
-    max-width: 50rem;
-    margin: 3rem auto;
-  }
+//   @media screen and (max-width: 779px) {
+//     max-width: 50rem;
+//     margin: 3rem auto;
+//   }
 
-  @media screen and (max-width: 550px) {
-    max-width: 35rem;
-    margin: 1rem auto;
-    margin-top: 2rem;
-  }
+//   @media screen and (max-width: 550px) {
+//     max-width: 35rem;
+//     margin: 1rem auto;
+//     margin-top: 2rem;
+//   }
 
-  @media screen and (max-width: 390px) {
-    max-width: 28rem;
-  }
+//   @media screen and (max-width: 390px) {
+//     max-width: 28rem;
+//   }
 
-  @media screen and (max-width: 340px) {
-    max-width: 24rem;
-  }
-}
+//   @media screen and (max-width: 340px) {
+//     max-width: 24rem;
+//   }
+// }
