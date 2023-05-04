@@ -84,6 +84,10 @@
   border-left: 2px solid $color-light;
   min-height: 10rem;
 
+  @media screen and (max-width: 600px) {
+    min-height: 15rem;
+  }
+
   div {
     @media screen and (min-width: 551px) {
       margin-bottom: 5rem;
