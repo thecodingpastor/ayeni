@@ -1,28 +1,24 @@
-import React from "react";
-
+import Link from "next/link";
 import classes from "./Footer.module.scss";
 
 const Footer = () => {
-  const BubbleArr = [];
-  for (let i = 0; i < 128; i++) {
-    BubbleArr.push(
-      <div className={classes.bubble} key={i}>
-        a{" "}
-      </div>
-    );
-  }
-  return null;
-
   return (
-    <div className={classes.Container}>
-      <div className={classes.bubbles}>{BubbleArr}</div>
-    </div>
+    <footer className={classes.Container}>
+      <p>
+        {" "}
+        <Link href="https://linkedin.com/in/michael-ayeni" target="__blank">
+          {" "}
+          Linked In
+        </Link>{" "}
+        |{" "}
+        <Link href="https://twitter.com/thecodingpastor" target="__blank">
+          Twitter
+        </Link>{" "}
+        | <a href="mailto: thecodingpastor@gmail.com">Gmail </a>
+      </p>
+      <p>&copy; TheCodingPastor {new Date().getFullYear()}</p>
+    </footer>
   );
 };
-
-// div.footer
-//     div.bubbles
-//         - for (var i = 0; i < 128; i++) //Small numbers looks nice too
-//             div.bubble(style=`--size:${2+Math.random()*4}rem; --distance:${6+Math.random()*4}rem; --position:${-5+Math.random()*110}%; --time:${2+Math.random()*2}s; --delay:${-1*(2+Math.random()*2)}s;`)
 
 export default Footer;

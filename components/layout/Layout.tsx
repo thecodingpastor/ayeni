@@ -15,6 +15,8 @@ import FloatingButtons from "../general/FloatingButtons";
 import { SelectProject } from "../../features/Project/projectSlice";
 import { SelectBlog } from "../../features/Blog/BlogSlice";
 
+import classes from "./Layout.module.scss";
+
 interface IProps {
   children?: React.ReactNode;
 }
@@ -55,12 +57,19 @@ const Layout: React.FC<IProps> = (props) => {
 
   return (
     <PersistLogin>
-      <Navigation />
-      {alertMessages.length > 0 && (
-        <ToastContainer alertMessages={alertMessages} position="top-right" />
-      )}
-      <main>{props.children}</main>
-      {pathname !== "/" && <Footer />}
+      <div className={classes.Container}>
+        <Navigation />
+        {alertMessages.length > 0 && (
+          <ToastContainer alertMessages={alertMessages} position="top-right" />
+        )}
+
+        <main>{props.children}</main>
+        {pathname !== "/" && (
+          <div style={{ marginTop: "auto !important" }}>
+            <Footer />
+          </div>
+        )}
+      </div>
       <ScrollUpButton />
       {accessToken && allowedRoutesFloatingButtonParams.includes(pathname) && (
         <FloatingButtons

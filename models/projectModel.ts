@@ -11,27 +11,13 @@ const ProjectSchema = new Schema(
       ],
     },
     images: Array,
-    videoURL: {
-      type: String,
-      minlength: [5, "Project Video URL cannot be less than 5 characters."],
-      maxlength: [300, "Project Video URL cannot be more than 300 characters."],
-    },
+    videoURL: String,
     slug: {
       type: String,
       unique: [true, "Tweak the title a bit, title already in use"],
     },
-    backEndGithubURL: {
-      type: String,
-      default: "",
-    },
-    frontEndGithubURL: {
-      type: String,
-      minlength: [5, "Frontend Github URL cannot be less than 5 characters."],
-      maxlength: [
-        300,
-        "Frontend Github URL cannot be more than 300 characters.",
-      ],
-    },
+    backEndGithubURL: String,
+    frontEndGithubURL: String,
     title: {
       type: String,
       minlength: [5, "Project title cannot be less than 5 characters."],

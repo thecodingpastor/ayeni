@@ -5,7 +5,6 @@ import { useAppDispatch, useAppSelector } from "../../../fetchConfig/store";
 import { useLocalStorage } from "../../../hooks/useLocalStorage";
 
 import { AddAlertMessage } from "../../UI/UISlice";
-import { SelectAuth } from "../../auth/authSlice";
 import { SelectProject, SetDraftProject } from "../projectSlice";
 import { SingleImageType } from "../type";
 import { CreateProject, UpdateProject } from "../projectApi";
@@ -48,7 +47,6 @@ const CourseForm: React.FC<{ isEdit?: boolean }> = ({ isEdit }) => {
   const dispatch = useAppDispatch();
   const { draftProject, currentProject, projectLoading } =
     useAppSelector(SelectProject);
-  const { accessToken } = useAppSelector(SelectAuth);
   const { push } = useRouter();
 
   const init = !isEdit
@@ -99,13 +97,14 @@ const CourseForm: React.FC<{ isEdit?: boolean }> = ({ isEdit }) => {
   const CourseIsValid =
     /^.{5,100}$/.test(title) &&
     /^.{10,}$/.test(MainContent) &&
-    urlValidation.test(frontEndGithubURL) &&
     urlValidation.test(domainName) &&
-    urlValidation.test(frontEndGithubURL) &&
+    (frontEndGithubURL?.trim().length > 0
+      ? urlValidation.test(frontEndGithubURL)
+      : true) &&
     (backEndGithubURL?.trim().length > 0
       ? urlValidation.test(backEndGithubURL)
       : true) &&
-    urlValidation.test(videoURL) &&
+    (videoURL?.trim().length > 0 ? urlValidation.test(videoURL) : true) &&
     /^.{10,}$/.test(description);
 
   // I only implemented this to create course, not to edit it

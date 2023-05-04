@@ -56,13 +56,15 @@ const index: React.FC<ProjectType> = (props) => {
         />
       </Modal>
 
-      <Modal isOpen={ModalMode === "video"} close={() => setModalMode(null)}>
+      {/* <Modal isOpen={ModalMode === "video"} close={() => setModalMode(null)}>
         <Video src={currentProject?.videoURL!} />
-      </Modal>
+      </Modal> */}
       <div className={classes.Container}>
         <h1>{currentProject?.title}</h1>
         <div className={classes.Externals}>
-          <span onClick={() => setModalMode("video")}>Preview Video</span>
+          {currentProject?.videoURL && (
+            <span onClick={() => setModalMode("video")}>Preview Video</span>
+          )}
           <span onClick={() => setModalMode("images")}>Snapshots</span>
 
           {currentProject?.frontEndGithubURL && (
